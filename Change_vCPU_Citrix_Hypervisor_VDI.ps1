@@ -1,4 +1,6 @@
-##########################################
+######################################################################################################
+# First of all: You need the Citrix Hypervisor SDK installed on your Computer and import the Modules #
+######################################################################################################
 # Connect to your Citrix Hypervisor Host #
 ##########################################
 # Modify your User and PW here           #
@@ -26,7 +28,7 @@ $ListOfVM = Get-XenVM | ? {$_.is_a_snapshot -eq $false -and $_.is_a_template -eq
 
   ForEach ($VM in $ListOfVM)
        {
-           Set-XenVM -Name $VM -NameDescription "VDI Business SG"
+        Set-XenVM -Name $VM -NameDescription "VDI Business SG"
         Set-XenVM -Name $VM -VCPUsAtStartup 2
         Set-XenVM -Name $VM -VCPUsMax 2
         Set-XenVM -Name $VM -Platform @{ "cores-per-socket" = "2"; hpet = "true"; pae = "true"; vga = "std"; nx = "true"; viridian_time_ref_count = "true"; apic = "true"; viridian_reference_tsc = "true"; viridian = "true"; acpi = "1" }
