@@ -28,7 +28,7 @@ $ListOfVM = Get-XenVM | ? {$_.is_a_snapshot -eq $false -and $_.is_a_template -eq
 
   ForEach ($VM in $ListOfVM)
        {
-        Set-XenVM -Name $VM -NameDescription "VDI Business SG"
+        Set-XenVM -Name $VM -NameDescription "changed vCPU - Setup 2 vCPUs now"
         Set-XenVM -Name $VM -VCPUsAtStartup 2
         Set-XenVM -Name $VM -VCPUsMax 2
         Set-XenVM -Name $VM -Platform @{ "cores-per-socket" = "2"; hpet = "true"; pae = "true"; vga = "std"; nx = "true"; viridian_time_ref_count = "true"; apic = "true"; viridian_reference_tsc = "true"; viridian = "true"; acpi = "1" }
